@@ -1,0 +1,6 @@
+# Ignora as pastas node_modules
+node_modules
+
+# Imagens enviadas pelo backoffice — ignora o conteúdo mas mantém a pasta
+backend/uploads/*
+!backend/uploads/.gitkeep
