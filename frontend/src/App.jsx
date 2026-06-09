@@ -1,15 +1,27 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 import { AuthProvider, useAuth } from './AuthContext.jsx';
+
 import ProtectedRoute from './ProtectedRoute.jsx';
+
 import LoginPage from './pages/LoginPage.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
 
-// Redireciona para o dashboard se já estiver logado como admin
+import HomePage from './pages/HomePage.jsx';
+import ProductDetails from './pages/ProductDetails.jsx';
+
 function BackofficeIndex() {
   const { user, loading } = useAuth();
-  if (loading) return <div style={{ padding: '2rem' }}>Carregando...</div>;
-  if (user?.role === 'admin') return <Navigate to="/backoffice/dashboard" replace />;
+
+  if (loading) {
+    return <div style={{ padding: '2rem' }}>Carregando...</div>;
+  }
+
+  if (user?.role === 'admin') {
+    return <Navigate to="/backoffice/dashboard" replace />;
+  }
+
   return <LoginPage />;
 }
 
@@ -18,11 +30,12 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Site — página em branco para os alunos desenvolverem */}
-          <Route path="/" element={<div />} />
+          <Route path="/" element={<HomePage />} />
 
-          {/* Backoffice — área administrativa */}
+          <Route path="/product/:id" element={<ProductDetails />} />
+
           <Route path="/backoffice" element={<BackofficeIndex />} />
+
           <Route
             path="/backoffice/dashboard"
             element={
@@ -32,7 +45,6 @@ export default function App() {
             }
           />
 
-          {/* Qualquer outra rota volta para o site */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
