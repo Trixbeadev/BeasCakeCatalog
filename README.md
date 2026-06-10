@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Projeto Catálogo de Produtos
 
 Projeto base para a atividade de **Programação Web para Front-End (AC4)**.
@@ -203,7 +202,5 @@ As imagens enviadas pelo backoffice ficam salvas na pasta `backend/uploads/` e s
 - Os produtos já vêm com dados de exemplo para você visualizar o resultado
 - Você pode adicionar novas imagens pelo backoffice e vê-las aparecer no site em tempo real
 - `react-router-dom` já está instalado — use `<Link>` e `useParams` para navegação
-=======
-# BeasCakeCatalog
-Site de vendas de bolos de pote desenvolvido com React, Vite, Node.js e Express. Possui catálogo de produtos, painel administrativo e integração com API REST.
+
 >>>>>>> 094b2328d33a19603ea61d4b92bab17cef2f8858
